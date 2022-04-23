@@ -1,4 +1,4 @@
-class Player {
+class Alien {
   constructor(game, x, y, width, height) {
     this.game = game;
     this.x = x;
@@ -8,15 +8,16 @@ class Player {
     this.img = new Image();
   }
   draw() {
-    this.game.ctx.fillStyle = "red";
+      
+    this.game.ctx.fillStyle = "blue";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
   /* moveLeft() {
-    this.x;
-  }
-
-  moveRight() {
-    this.x;
-  } */
+      this.x;
+    }
+  
+    moveRight() {
+      this.x;
+    } */
 }
