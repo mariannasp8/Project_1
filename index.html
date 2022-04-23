@@ -4,9 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Game</title>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <section id="section-1">
+      <h1>game title</h1>
+      <div class="game-box">
+        <div id="board-game">
+          <canvas
+            id="canvas"
+            width="600"
+            height="600"
+            style="border: 1px solid black"
+          ></canvas>
+        </div>
+        <div class="info-box">
+          <p id="instructions">
+            here it will be some instructions for the game and some guidelines
+            as well
+          </p>
+          <p>score:</p>
+        </div>
+      </div>
+    </section>
+    <script src="./game.js"></script>
+    <script src="./controls.js"></script>
+    <script src="./player.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
