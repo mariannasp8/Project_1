@@ -3,7 +3,7 @@ class Game {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.backgroundImg = new Image();
-    //this.backgroundImg.src = "http://www.enquiringminds.com.au/wp-content/uploads/2012/09/em_exprt-pic_spce_gaensler_140x140.png";
+    this.backgroundImg.src = "./docs/assets/img/background-space_05.png";
     this.x = 0;
     this.y = 0;
     this.width = 600;
@@ -30,7 +30,7 @@ class Game {
         this.alien[i].draw();
         this.loopX += 50;
       } else {
-        this.alien.push(new Alien(this, 10 + this.loopX2, 100, 40, 40));
+        this.alien.push(new Alien(this, 10 + this.loopX2, 120, 40, 40));
         this.alien[i].draw();
         this.loopX2 += 50;
       }
@@ -47,15 +47,15 @@ class Game {
   }
 
   drawBackground() {
-    this.ctx.fillStyle = "black";
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    /*  this.ctx.fillStyle = "black";
+    this.ctx.fillRect(this.x, this.y, this.width, this.height); */
 
-    /* this.ctx.drawImage(
+    this.ctx.drawImage(
       this.backgroundImg,
       this.x,
       this.y,
       this.width,
       this.height
-    ); */
+    );
   }
 }

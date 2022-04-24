@@ -1,4 +1,11 @@
-#section1 {
+@font-face {
+  src: url(./docs/assets/fonts/Solaris.ttf);
+  font-family: sol;
+}
+body {
+  background-color: #b3cdd1;
+}
+#section-1 {
   /*border: 1px solid red;*/
   display: flex;
   flex-direction: column;
@@ -6,12 +13,16 @@
 
 h1 {
   /*border: 1px solid purple;*/
-  margin-left: 300px;
+  margin-left: 380px;
+  font-family: sol;
+  font-size: 70px;
 }
 
 canvas {
-  margin-left: 70px;
-  font-family: "Helvetica";
+  margin-left: 200px;
+  margin-right: 40px;
+  font-family: "Chakra Petch", sans-serif;
+  border-radius: 10px;
 }
 
 .game-box {
@@ -26,5 +37,8 @@ canvas {
   margin: 20px 20px 20px 20px;
 }
 #instructions {
-  font-size: 12px;
+  font-size: 15px;
+}
+p {
+  font-family: "Chakra Petch", sans-serif;
 }

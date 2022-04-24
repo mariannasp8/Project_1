@@ -17,6 +17,7 @@ class Controls {
             this.player.moveLeft();
           }
           break;
+        //case "Space":
       }
     });
   }

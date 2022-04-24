@@ -10,6 +10,7 @@ class Player {
   draw() {
     this.game.ctx.fillStyle = "red";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    //this.shoot();
   }
 
    moveLeft() {
@@ -19,4 +20,10 @@ class Player {
   moveRight() {
     this.x += 10;
   } 
+
+/*
+  shoot() {
+      
+  }
+  */
 }

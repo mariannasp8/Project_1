@@ -8,8 +8,7 @@ class Alien {
     this.img = new Image();
   }
   draw() {
-      
-    this.game.ctx.fillStyle = "blue";
+    this.game.ctx.fillStyle = "#9e768f";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
