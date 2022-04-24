@@ -9,6 +9,7 @@ class Game {
     this.width = 600;
     this.height = 600;
     this.player = null;
+    this.controls = null;
     this.alien = [];
 
     this.loopX = 0;
@@ -19,6 +20,8 @@ class Game {
     this.drawBackground();
     this.player = new Player(this, 200, 550, 40, 40);
     this.player.draw();
+    this.controls = new Controls(this);
+    this.controls.keyboardEvents();
     /*  this.alien = new Alien(this, 100, 200, 40, 40);
     this.alien1 = new Alien(this, 200, 200, 40, 40); */
     for (let i = 0; i < 20; i++) {

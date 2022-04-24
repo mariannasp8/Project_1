@@ -12,11 +12,11 @@ class Player {
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
-  /* moveLeft() {
-    this.x;
+   moveLeft() {
+    this.x -= 10;
   }
 
   moveRight() {
-    this.x;
-  } */
+    this.x += 10;
+  } 
 }
