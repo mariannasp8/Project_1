@@ -7,23 +7,20 @@ class Player {
     this.height = height;
     this.img = new Image();
   }
+  //DRAW THE PLAYER:
   draw() {
     this.game.ctx.fillStyle = "red";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
-    //this.shoot();
   }
 
-   moveLeft() {
+  //MOVE THE PLAYER:
+  moveLeft() {
     this.x -= 10;
   }
 
   moveRight() {
     this.x += 10;
-  } 
-
-/*
-  shoot() {
-      
   }
-  */
+
+  
 }

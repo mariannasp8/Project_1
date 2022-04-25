@@ -3,11 +3,12 @@ window.onload = () => {
     startGame();
   };
 
+  let game = null;
+
   function startGame() {
-    const game = new Game();
-    game.start();
-    const inervalId = setInterval(() => {
-      game.update();
-    }, 30);
+    if (!game) {
+      game = new Game();
+      game.start();
+    }
   }
 };

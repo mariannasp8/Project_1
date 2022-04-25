@@ -11,12 +11,13 @@ class Game {
     this.player = null;
     this.controls = null;
     this.alien = [];
-    this.smallAlien = [];
     this.loopX = 0;
     this.loopY = 20;
     this.loopSmallX = 0;
     this.loopSmallY = 75;
     this.intervalId = null;
+    this.bullets = [];
+    this.frames = 0;
   }
 
   start() {
@@ -27,9 +28,9 @@ class Game {
     this.controls.keyboardEvents();
     this.intervalId = setInterval(() => {
       this.update();
-    }, 100 / 60);
+    }, 1000 / 60);
 
-    // BIG ALIEN:
+    //DARW BIG ALIEN:
     for (let i = 0; i < 59; i++) {
       if (this.canvas.width > this.loopX + 40 + 10) {
         this.alien.push(
@@ -51,30 +52,16 @@ class Game {
     for (let i = 0; i < 54; i++) {
       if (this.canvas.width > this.loopSmallX + 40 + 10) {
         this.alien.push(
-          new Alien(
-            this,
-            30 + this.loopSmallX,
-            this.loopSmallY,
-            10,
-            10,
-            "white"
-          )
+          new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
-        this.alien[i].draw();
+
         // console.log(this.alien[i]);
         this.loopSmallX += 58; //spacing between
       } else {
         this.loopSmallY += 80;
         this.loopSmallX = 0;
         this.alien.push(
-          new Alien(
-            this,
-            30 + this.loopSmallX,
-            this.loopSmallY,
-            10,
-            10,
-            "white"
-          )
+          new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
         // console.log(this.alien[i]);
       }
@@ -84,16 +71,73 @@ class Game {
   update() {
     this.drawBackground();
     this.player.draw();
+    this.frames++;
+
     for (let i = 0; i < this.alien.length; i++) {
       this.alien[i].draw();
     }
-    //console.log("hi");
+    //DRAW BULLETS:
+    this.bullets.forEach((bullet) => {
+      bullet.drawBullet();
+    });
+    this.checkColision();
+  }
+
+  /* checkImpact() {
+    for (let e = 0; e < this.alien.length; e++) {
+      for (let s = 0; s < this.bullets.length; s++) {
+        if (this.bullets[s].crashWith(this.alien[e])) {
+          this.bullets.splice(s, 1);
+          this.alien.splice(e, 1);
+        }
+      }
+    }
+  } */
+
+  //Colision of bullets with Alien:
+  //Do a loop in Alien + loop in the bullets (arrays):
+  checkColision() {
+    this.bullets.forEach((bullet) => {
+      let alienToKill = [];
+      const kill = this.alien.some((el) => {
+        alienToKill = this.alien.indexOf(el);
+        return bullet.crashWith(el);
+      });
+      if (kill) {
+        console.log(alienToKill, bullet, this.alien);
+        this.alien.splice(alienToKill, 1);
+        this.bullets.splice(bullet, 1);
+        this.score++;
+      }
+      /*     this.alien.forEach((el, j) => {
+        if (bullet.crashWith(el)) {
+          this.alien.splice(j, 1);
+          this.bullets.splice(j, 1);
+          this.score++;
+          //score.innerHTML = this.score;
+        }
+      }); */
+    });
+  }
+
+  //GAME OVER:
+
+  /*  checkGameOver() {
+    const bullets = this.bullets;
+    const kill = this.alien.some(function (el) {
+      return bullets.crashWith(el);
+    });
+  }  */
+
+  //Stop the game:
+  stop() {
+    clearInterval(this.intervalId);
   }
 
   drawBackground() {
     /*  this.ctx.fillStyle = "black";
     this.ctx.fillRect(this.x, this.y, this.width, this.height); */
-
+    //DRAW MY IMAGE BACKGROUND:
     this.ctx.drawImage(
       this.backgroundImg,
       this.x,
@@ -101,5 +145,11 @@ class Game {
       this.width,
       this.height
     );
+  }
+
+  //DRAW SCORES:
+
+  drawScores() {
+    let score = Math.floor(this.frames / 60);
   }
 }

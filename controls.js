@@ -17,7 +17,17 @@ class Controls {
             this.player.moveLeft();
           }
           break;
-        //case "Space":
+        case "Space":
+          this.game.bullets.push(
+            new Bullet(
+              this.game,
+              this.player.x + this.player.width / 2,
+              this.player.y,
+              3,
+              "white"
+            )
+          );
+          break;
       }
     });
   }
