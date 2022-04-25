@@ -11,9 +11,12 @@ class Game {
     this.player = null;
     this.controls = null;
     this.alien = [];
-
+    this.smallAlien = [];
     this.loopX = 0;
-    this.loopX2 = 0;
+    this.loopY = 20;
+    this.loopSmallX = 0;
+    this.loopSmallY = 75;
+    this.intervalId = null;
   }
 
   start() {
@@ -22,17 +25,58 @@ class Game {
     this.player.draw();
     this.controls = new Controls(this);
     this.controls.keyboardEvents();
-    /*  this.alien = new Alien(this, 100, 200, 40, 40);
-    this.alien1 = new Alien(this, 200, 200, 40, 40); */
-    for (let i = 0; i < 20; i++) {
-      if (this.width > 10 + this.loopX) {
-        this.alien.push(new Alien(this, 10 + this.loopX, 20, 40, 40));
+    this.intervalId = setInterval(() => {
+      this.update();
+    }, 100 / 60);
+
+    // BIG ALIEN:
+    for (let i = 0; i < 59; i++) {
+      if (this.canvas.width > this.loopX + 40 + 10) {
+        this.alien.push(
+          new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
+        );
         this.alien[i].draw();
+        // console.log(this.alien[i]);
         this.loopX += 50;
       } else {
-        this.alien.push(new Alien(this, 10 + this.loopX2, 120, 40, 40));
+        this.loopY += 80;
+        this.loopX = 0;
+        this.alien.push(
+          new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
+        );
+        // console.log(this.alien[i]);
+      }
+    }
+    //DRAW SMALL ALIEN:
+    for (let i = 0; i < 54; i++) {
+      if (this.canvas.width > this.loopSmallX + 40 + 10) {
+        this.alien.push(
+          new Alien(
+            this,
+            30 + this.loopSmallX,
+            this.loopSmallY,
+            10,
+            10,
+            "white"
+          )
+        );
         this.alien[i].draw();
-        this.loopX2 += 50;
+        // console.log(this.alien[i]);
+        this.loopSmallX += 58; //spacing between
+      } else {
+        this.loopSmallY += 80;
+        this.loopSmallX = 0;
+        this.alien.push(
+          new Alien(
+            this,
+            30 + this.loopSmallX,
+            this.loopSmallY,
+            10,
+            10,
+            "white"
+          )
+        );
+        // console.log(this.alien[i]);
       }
     }
   }
@@ -43,7 +87,7 @@ class Game {
     for (let i = 0; i < this.alien.length; i++) {
       this.alien[i].draw();
     }
-    console.log("hi");
+    //console.log("hi");
   }
 
   drawBackground() {
