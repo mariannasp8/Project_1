@@ -23,4 +23,31 @@ class Player {
   moveRight() {
     this.x += 10;
   }
+
+  //PLAYER LIMITS (use this for establish the colisions):
+  topPlayer() {
+    return this.y;
+  }
+
+  bottomPlayer() {
+    return this.y + this.height;
+  }
+
+  rightPlayer() {
+    return this.x + this.width;
+  }
+
+  leftPlayer() {
+    return this.x;
+  }
+
+  //CONDITIONS FOR THE COLLISION (enemies/player):
+  crashWithEnemies(enemies) {
+    return !(
+      this.bottomPlayer() < enemies.topEnemy() ||
+      this.topPlayer() > enemies.bottomEnemy() ||
+      this.rightPlayer() < enemies.leftEnemy() ||
+      this.leftPlayer() > enemies.rightEnemy()
+    );
+  }
 }
