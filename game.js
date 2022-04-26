@@ -11,13 +11,15 @@ class Game {
     this.player = null;
     this.controls = null;
     this.alien = [];
-    this.loopX = 0;
-    this.loopY = 20;
-    this.loopSmallX = 0;
-    this.loopSmallY = 75;
+    this.loopX = 30;
+    this.loopY = 80;
+    this.loopSmallX = 45; // start position x
+    this.loopSmallY = 132;
     this.intervalId = null;
     this.bullets = [];
     this.frames = 0;
+    this.intervalId = null;
+    this.score = 0;
   }
 
   start() {
@@ -31,40 +33,42 @@ class Game {
     }, 1000 / 60);
 
     //DARW BIG ALIEN:
-    for (let i = 0; i < 59; i++) {
-      if (this.canvas.width > this.loopX + 40 + 10) {
+    for (let i = 0; i < 50; i++) {
+      if (this.canvas.width > this.loopX + 40) {
         this.alien.push(
-          new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
+          new Alien(this, this.loopX, this.loopY, 40, 40, "#9e768f")
         );
-        this.alien[i].draw();
-        this.loopX += 50;
+        this.loopX += 55;
       } else {
         this.loopY += 80;
-        this.loopX = 0;
+        this.loopX = 30;
         this.alien.push(
-          new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
+          new Alien(this, this.loopX, this.loopY, 40, 40, "#9e768f")
         );
+        this.loopX += 55;
       }
     }
 
     //DRAW SMALL ALIEN:
-    for (let i = 0; i < 54; i++) {
-      if (this.canvas.width > this.loopSmallX + 40 + 10) {
+    for (let i = 0; i < 50; i++) {
+      if (this.canvas.width > this.loopSmallX + 40) {
         this.alien.push(
           new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
-        this.loopSmallX += 58; //spacing between
+        this.loopSmallX += 55; //spacing between
       } else {
-        this.loopSmallY += 80;
-        this.loopSmallX = 0;
+        this.loopSmallY += 80; //spacing in the y
+        this.loopSmallX = 45; //spacing in the x
         this.alien.push(
           new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
+        this.loopSmallX += 55;
       }
     }
   }
 
   update() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawBackground();
     this.player.draw();
     this.frames++;
@@ -77,6 +81,8 @@ class Game {
       bullet.drawBullet();
     });
     this.checkColision();
+    this.drawTimer();
+    this.checkGameOver();
   }
 
   /* checkImpact() {
@@ -125,7 +131,12 @@ class Game {
         if (bullet.crashWith(el)) {
           this.alien.splice(indexAl, 1);
           this.bullets.splice(indexBull, 1);
-          this.score++;
+
+          if (el.width === 10) {
+            this.score += 100;
+          } else {
+            this.score += 50;
+          }
         }
       });
     });
@@ -133,12 +144,22 @@ class Game {
 
   //GAME OVER:
 
-  /*  checkGameOver() {
-    const bullets = this.bullets;
-    const kill = this.alien.some(function (el) {
-      return bullets.crashWith(el);
-    });
-  }  */
+  checkGameOver() {
+    if (this.frames > 60 * 60) {
+      // meter tela de gameover!
+      this.stop();
+      this.ctx.clearRect(0, 0, this.width, this.height);
+    }
+  }
+
+  //CHECK WIN:
+  checkWin() {
+    if (this.score === 2000) {
+      // meter tela de win!
+      this.stop();
+      this.ctx.clearRect(0, 0, this.width, this.height);
+    }
+  }
 
   //Stop the game:
   stop() {
@@ -158,9 +179,14 @@ class Game {
     );
   }
 
-  //DRAW SCORES:
+  //DRAW TIMER:
 
-  drawScores() {
-    let score = Math.floor(this.frames / 60);
+  drawTimer() {
+    let timer = Math.floor(this.frames / 60);
+    this.ctx.font = "24px sol";
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText(`Timer: ${timer}`, 25, 35);
+    //DRAW SCORE:
+    this.ctx.fillText(`Score: ${this.score}`, 480, 35);
   }
 }

@@ -9,8 +9,10 @@ class Player {
   }
   //DRAW THE PLAYER:
   draw() {
-    this.game.ctx.fillStyle = "red";
-    this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    /* this.game.ctx.fillStyle = "red";
+    this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */
+    this.img.src = "./docs/assets/img/player_01.png";
+    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
   //MOVE THE PLAYER:
@@ -21,6 +23,4 @@ class Player {
   moveRight() {
     this.x += 10;
   }
-
-  
 }

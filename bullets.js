@@ -15,7 +15,7 @@ class Bullet {
     this.game.ctx.fillStyle = this.color;
     this.game.ctx.fill();
     //to move the bullet:
-    this.y--;
+    this.y -= 3;
   };
 
   //BULLETS LIMITS (use this for establish the colisions):

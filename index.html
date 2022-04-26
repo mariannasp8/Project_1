@@ -16,9 +16,11 @@
   </head>
   <body>
     <section id="section-1">
+      <!-- SCREEN  -->
       <h1>SOLARIS</h1>
       <div class="game-box">
         <div id="board-game">
+          <!-- GAME SCREEN -->
           <canvas
             id="canvas"
             width="600px"
@@ -26,20 +28,22 @@
             style="border: 1px solid black"
           ></canvas>
         </div>
+        <!-- INSTRUCTIONS SCREEN -->
         <div class="info-box">
           <p id="instructions">
             Hey there! Our planet is being invaded by aliens. <br />
             Helps us to kill them and avoid an ivasion.
           </p>
           <p>Hit as many enemies as you can</p>
-          <h5>score:</h5>
+          <!-- SCORE SCREEN -->
+          <h5 id="score">score: <span></span></h5>
           <h5>life:</h5>
           <button id="start-btn">star</button>
           <!--<button id="kill">kill</button>-->
         </div>
       </div>
     </section>
-    
+    <!-- LINKS -->
     <script src="./alien.js"></script>
     <script src="./bullets.js"></script>
     <script src="./controls.js"></script>
