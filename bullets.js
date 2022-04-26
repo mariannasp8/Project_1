@@ -6,6 +6,7 @@ class Bullet {
     this.radius = radius;
     this.color = color;
   }
+
   //to create the bullet:
   drawBullet = () => {
     this.game.ctx.beginPath();
@@ -25,15 +26,16 @@ class Bullet {
   bottomBullet() {
     return this.y + this.height;
   }
-
+  //PUT THE RADIUS BECAUSE THE BULLET IS A CIRCLE:
   rigthBullet() {
-    return this.x + this.width;
+    return this.x + this.radius;
   }
 
   leftBullet() {
     return this.x;
   }
 
+  //CONDITIONS FOR THE COLLISION:
   crashWith(alien) {
     return !(
       this.bottomBullet() < alien.topAlien() ||

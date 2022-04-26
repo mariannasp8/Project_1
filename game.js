@@ -37,7 +37,6 @@ class Game {
           new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
         );
         this.alien[i].draw();
-        // console.log(this.alien[i]);
         this.loopX += 50;
       } else {
         this.loopY += 80;
@@ -45,17 +44,15 @@ class Game {
         this.alien.push(
           new Alien(this, 30 + this.loopX, this.loopY, 40, 40, "#9e768f")
         );
-        // console.log(this.alien[i]);
       }
     }
+
     //DRAW SMALL ALIEN:
     for (let i = 0; i < 54; i++) {
       if (this.canvas.width > this.loopSmallX + 40 + 10) {
         this.alien.push(
           new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
-
-        // console.log(this.alien[i]);
         this.loopSmallX += 58; //spacing between
       } else {
         this.loopSmallY += 80;
@@ -63,7 +60,6 @@ class Game {
         this.alien.push(
           new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
         );
-        // console.log(this.alien[i]);
       }
     }
   }
@@ -72,7 +68,7 @@ class Game {
     this.drawBackground();
     this.player.draw();
     this.frames++;
-
+    //DRAW ALIENS:
     for (let i = 0; i < this.alien.length; i++) {
       this.alien[i].draw();
     }
@@ -94,9 +90,9 @@ class Game {
     }
   } */
 
-  //Colision of bullets with Alien:
+  //Colision of bullets with Alien(doing in the class):
   //Do a loop in Alien + loop in the bullets (arrays):
-  checkColision() {
+  /*   checkColision() {
     this.bullets.forEach((bullet) => {
       let alienToKill = [];
       const kill = this.alien.some((el) => {
@@ -109,14 +105,29 @@ class Game {
         this.bullets.splice(bullet, 1);
         this.score++;
       }
-      /*     this.alien.forEach((el, j) => {
+      this.alien.forEach((el, j) => {
         if (bullet.crashWith(el)) {
           this.alien.splice(j, 1);
           this.bullets.splice(j, 1);
           this.score++;
           //score.innerHTML = this.score;
         }
-      }); */
+      });
+    });
+  }
+ */
+  /* // my colision
+//THIS IS MY COLISION:
+*/
+  checkColision() {
+    this.bullets.forEach((bullet, indexBull) => {
+      this.alien.forEach((el, indexAl) => {
+        if (bullet.crashWith(el)) {
+          this.alien.splice(indexAl, 1);
+          this.bullets.splice(indexBull, 1);
+          this.score++;
+        }
+      });
     });
   }
 
