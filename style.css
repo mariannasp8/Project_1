@@ -55,6 +55,9 @@ canvas {
   font-size: 15px;
 }
 p {
-  font-family: "Chakra Petch", sans-serif;
+  font-family: sol;
   color: "white";
+}
+#start-btn {
+  font-family: sol;
 }

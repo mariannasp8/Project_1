@@ -9,10 +9,11 @@ class Player {
   }
   //DRAW THE PLAYER:
   draw() {
-    this.game.ctx.fillStyle = `hls(${Math.random() * 360}, 50%, 50%)`;
-    this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
-    /* this.img.src = "./docs/assets/img/player_01.png";
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height); */
+    // cicle with colors:
+    /* this.game.ctx.fillStyle = `hls(${Math.random() * 360}, 50%, 50%)`;
+    this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */
+    this.img.src = "./docs/assets/img/player.png";
+    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
   //MOVE THE PLAYER:

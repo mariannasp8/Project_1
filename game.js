@@ -237,6 +237,6 @@ this.sound.play();
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Timer: ${timer}`, 25, 40);
     //DRAW SCORE:
-    this.ctx.fillText(`Score: ${this.score}`, 430, 35);
+    this.ctx.fillText(`Score: ${this.score}`, 420, 35);
   }
 }

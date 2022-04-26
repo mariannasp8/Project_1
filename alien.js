@@ -11,8 +11,10 @@ class Alien {
 
   draw() {
     //DRAW ALIENS:
-    this.game.ctx.fillStyle = this.color;
-    this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    /* this.game.ctx.fillStyle = this.color;
+    this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */  
+    this.img.src = "./docs/assets/img/alien_02.png";
+    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
   //ALIEN LIMITS (use this for establish the colisions):
