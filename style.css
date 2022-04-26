@@ -3,7 +3,18 @@
   font-family: sol;
 }
 body {
-  background-color: #b3cdd1;
+  /* background-color: #b3cdd1; */
+  background-image: url(/docs/assets/img/background-space_07.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+/*not working - making background more tansparent*/
+.overlay {
+  background: #00000056;
+  width: 100%;
+  position: absolute;
 }
 #section-1 {
   /*border: 1px solid red;*/
@@ -13,9 +24,11 @@ body {
 
 h1 {
   /*border: 1px solid purple;*/
-  margin-left: 380px;
+  margin-left: 315px;
   font-family: sol;
   font-size: 70px;
+  padding-top: -20px; /*not working*/
+  color: #6c464f;
 }
 
 canvas {
@@ -24,7 +37,9 @@ canvas {
   font-family: "Chakra Petch", sans-serif;
   border-radius: 10px;
 }
-
+#canvas {
+  box-shadow: 10px, 5px 5px black;
+}
 .game-box {
   /*border: 1px solid salmon;*/
   display: flex;
@@ -41,4 +56,5 @@ canvas {
 }
 p {
   font-family: "Chakra Petch", sans-serif;
+  color: "white";
 }

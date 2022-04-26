@@ -22,13 +22,18 @@ class Game {
     this.score = 0;
     this.enemies = [];
     this.hits3X = 0;
-    this.projectiles = [
-
-    ]
+    this.projectiles = [];
+    this.sound = new Audio();
   }
 
   //START THE GAME:
   start() {
+    //SOUND - START GAME:
+    this.sound.src =
+      "./docs/assets/sounds/start-asteroid-space-atmosphere-2004.wav";
+    this.sound.loop = false;
+    this.sound.play();
+    //START:
     this.drawBackground();
     this.player = new Player(this, 200, 550, 40, 40);
     this.player.draw();
@@ -130,7 +135,12 @@ class Game {
         if (bullet.crashWith(el)) {
           this.alien.splice(indexAl, 1);
           this.bullets.splice(indexBull, 1);
-
+          //SOUND - GET POINTS (not sure yet):
+          this.sound.src =
+            "./docs/assets/sounds/get points-fairy-arcade-sparkle-866.wav";
+          this.sound.loop = false;
+          this.sound.play();
+          //CONDITIONS FOR HIT ALIEN:
           if (el.width === 10) {
             this.score += 100;
           } else {
@@ -141,6 +151,12 @@ class Game {
     });
   }
 
+  /*  //SOUND - SHOOT:
+ this.sound.src =
+ "./docs/assets/sounds/shoot-repeating-arcade-beep-1084.wav";
+this.sound.loop = false;
+this.sound.play();
+ */
   // PLAYER being hit by ENEMIES:
   //COLISION - BONUS:
   checkColision2() {
@@ -160,12 +176,17 @@ class Game {
   //GAME OVER:
   checkGameOver() {
     if (this.frames > 60 * 60) {
+      //SOUND - GAME OVER:
+      this.sound.src =
+        "./docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
+      this.sound.loop = false;
+      this.sound.play();
       //draw game over screen:
       this.ctx.fillStyle = "#6c464f";
       this.ctx.fillRect(this.x, this.y, this.width, this.height);
       this.ctx.font = "30px sol";
       this.ctx.fillStyle = "#b3cdd1";
-      this.ctx.fillText(`Game Over`, 250, 250);
+      this.ctx.fillText(`Game Over`, 230, 300);
       //stop the game:
       this.stop();
       // if enemies collide 3X
@@ -175,12 +196,17 @@ class Game {
   //CHECK WIN:
   checkWin() {
     if (this.score >= 6000) {
+      //SOUND - WIN:
+      this.sound.src =
+        "./docs/assets/sounds/win-ethereal-fairy-win-sound-2019.wav";
+      this.sound.loop = false;
+      this.sound.play();
       //draw win screen:
       this.ctx.fillStyle = "#6c464f";
       this.ctx.fillRect(this.x, this.y, this.width, this.height);
       this.ctx.font = "30px sol";
       this.ctx.fillStyle = "#9fa4c4";
-      this.ctx.fillText(`You Win!`, 250, 250);
+      this.ctx.fillText(`You Win!`, 230, 300);
       this.stop();
     }
   }

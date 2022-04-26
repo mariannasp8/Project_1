@@ -44,7 +44,7 @@ class Enemy extends Alien {
   //DRAW ENEMIES:
   draw() {
     this.y += this.vY;
-    this.img.src = "./docs/assets/img/monster.png";
+    this.img.src = "./docs/assets/img/enemy.png";
     this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 

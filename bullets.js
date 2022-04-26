@@ -35,6 +35,7 @@ class Bullet {
     return this.x;
   }
 
+
   //CONDITIONS FOR THE COLLISION:
   crashWith(alien) {
     return !(
@@ -44,6 +45,7 @@ class Bullet {
       this.leftBullet() > alien.rightAlien()
     );
   }
+
 }
 
 
