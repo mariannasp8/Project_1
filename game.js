@@ -14,7 +14,7 @@ class Game {
     this.loopX = 30;
     this.loopY = 80;
     this.loopSmallX = 45; // start position x
-    this.loopSmallY = 132;
+    this.loopSmallY = 132; // start position y
     this.intervalId = null;
     this.bullets = [];
     this.frames = 0;
@@ -22,6 +22,9 @@ class Game {
     this.score = 0;
     this.enemies = [];
     this.hits3X = 0;
+    this.projectiles = [
+
+    ]
   }
 
   //START THE GAME:
@@ -89,6 +92,11 @@ class Game {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
+    //DRAW PARTICLES - BONUS:
+    /* for(let i = 0; i < 8; i++) {
+      projectiles.push(new Particle(this.projectiles.x, this.projectiles.y, 3, `hls(${Math.random() * 360}, 50%, 50%)`))
+    } */
+
     this.drawTimer();
     this.checkColision();
     this.checkColision2();
@@ -149,32 +157,6 @@ class Game {
     }
   }
 
-  /* checkColision2() {
-  this.enemies.forEach((enemy, i) => {
-    if(enemy.crashWithEnemies.player) {
-      this.enemies.splice(i, 1);
-      this.score -= 100;
-    }
-  })
-}
- */
-  /* checkColision2() {
-    this.enemies.forEach((enemy, indexEn) => {
-      this.player.forEach((el, indexPl) => {
-        if (enemy.crashWithEnemies()) {
-          this.enemies.forEach((enemy, indexEn) => {
-            this.player.forEach((el, indexPl) => {
-              if (enemy.crashWithEnemies(el)) {
-                this.enemies.splice(indexEn, 1);
-                this.score -= 100;
-              }
-            });
-          });
-        }
-      });
-    });
-  } */
-
   //GAME OVER:
   checkGameOver() {
     if (this.frames > 60 * 60) {
@@ -229,6 +211,6 @@ class Game {
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Timer: ${timer}`, 25, 40);
     //DRAW SCORE:
-    this.ctx.fillText(`Score: ${this.score}`, 440, 35);
+    this.ctx.fillText(`Score: ${this.score}`, 430, 35);
   }
 }
