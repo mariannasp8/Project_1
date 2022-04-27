@@ -1,10 +1,10 @@
 class Bullet {
-  constructor(game, x, y, radius, color) {
+  constructor(game, x, y) {
     this.game = game;
     this.x = x;
     this.y = y;
-    this.radius = radius;
-    this.color = color;
+    this.radius = 3;
+    this.color = `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`;
     this.sound = new Audio();
   }
 
@@ -56,7 +56,7 @@ class Bullet {
 }
 
 //CREATING MY PARTICLES EXPLOSION:
-/* class Particle {
+class Particle {
   constructor(game, x, y, radius, color) {
     this.x = x;
     this.y = y;
@@ -64,11 +64,12 @@ class Bullet {
     this.color = color;
   }
 
-drawParticles() {
-  this.game.ctx.beginPath();
-  this.game.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-  this.game.cts.fillStyle = `hls(${Math.random() * 360}, 50%, 50%)`;
-  this.game.fill();
+  drawParticles() {
+    this.game.ctx.beginPath();
+    this.game.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    this.game.cts.fillStyle = `hls(${Math.floor(
+      Math.random() * 360
+    )}, 50%, 50%)`;
+    this.game.fill();
+  }
 }
-
-} */

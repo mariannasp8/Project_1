@@ -22,13 +22,11 @@ class Controls {
             new Bullet(
               this.game,
               this.player.x + this.player.width / 2,
-              this.player.y,
-              3, `hsl (${Math.random() * 360}, 50%, 50%)`
-            ) // MY BULLETS SHOULD SHOOT 360 RANGE OF COLORS
+              this.player.y
+            )
           );
           break;
       }
     });
   }
 }
-
