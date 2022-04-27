@@ -5,6 +5,7 @@ class Bullet {
     this.y = y;
     this.radius = radius;
     this.color = color;
+    this.sound = new Audio();
   }
 
   //to create the bullet:
@@ -35,6 +36,13 @@ class Bullet {
     return this.x;
   }
 
+  /*  //SOUND - SHOOT (not sure yet):
+    shootSound() {
+      this.sound.src =
+      "./docs/assets/sounds/get points-fairy-arcade-sparkle-866.wav";
+    this.sound.loop = false;
+    this.sound.play();
+    } */
 
   //CONDITIONS FOR THE COLLISION:
   crashWith(alien) {
@@ -45,9 +53,7 @@ class Bullet {
       this.leftBullet() > alien.rightAlien()
     );
   }
-
 }
-
 
 //CREATING MY PARTICLES EXPLOSION:
 /* class Particle {
@@ -66,5 +72,3 @@ drawParticles() {
 }
 
 } */
-
-

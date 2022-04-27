@@ -1,19 +1,19 @@
 class Alien {
-  constructor(game, x, y, width, height, color) {
+  constructor(game, x, y, width, height, image) {
     this.game = game;
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
     this.img = new Image();
-    this.color = color;
+    this.image = image;
   }
 
   draw() {
     //DRAW ALIENS:
     /* this.game.ctx.fillStyle = this.color;
-    this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */  
-    this.img.src = "./docs/assets/img/alien_02.png";
+    this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */
+    this.img.src = this.image;
     this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
@@ -41,7 +41,7 @@ class Enemy extends Alien {
   constructor(game, x, y, width, height) {
     super(game, x, y, width, height);
     //speed:
-    this.vY = Math.floor(Math.random() * 5 + 1);
+    this.vY = Math.floor(Math.random() * 8 + 2);
   }
   //DRAW ENEMIES:
   draw() {

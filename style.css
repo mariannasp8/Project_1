@@ -38,7 +38,7 @@ canvas {
   border-radius: 10px;
 }
 #canvas {
-  box-shadow: 10px, 5px 5px black;
+  box-shadow: 20px, 5px 5px black;
 }
 .game-box {
   /*border: 1px solid salmon;*/
@@ -46,18 +46,18 @@ canvas {
   flex-direction: row;
 }
 .info-box {
-  /*border: 1px solid blue;*/
+  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   margin: 20px 20px 20px 20px;
 }
-#instructions {
-  font-size: 15px;
-}
+
 p {
+  color: white;
   font-family: sol;
-  color: "white";
+  font-size: 15px;
 }
 #start-btn {
   font-family: sol;
+  
 }

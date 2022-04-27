@@ -47,14 +47,28 @@ class Game {
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopX + 40) {
         this.alien.push(
-          new Alien(this, this.loopX, this.loopY, 40, 40, "#9e768f")
+          new Alien(
+            this,
+            this.loopX,
+            this.loopY,
+            40,
+            40,
+            "./docs/assets/img/alien_02.png"
+          )
         );
         this.loopX += 55;
       } else {
         this.loopY += 80;
         this.loopX = 30;
         this.alien.push(
-          new Alien(this, this.loopX, this.loopY, 40, 40, "#9e768f")
+          new Alien(
+            this,
+            this.loopX,
+            this.loopY,
+            40,
+            40,
+            "./docs/assets/img/alien_02.png"
+          )
         );
         this.loopX += 55;
       }
@@ -64,14 +78,28 @@ class Game {
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopSmallX + 40) {
         this.alien.push(
-          new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
+          new Alien(
+            this,
+            this.loopSmallX,
+            this.loopSmallY,
+            10,
+            10,
+            "./docs/assets/img/alien_03.png"
+          )
         );
         this.loopSmallX += 55; //spacing between
       } else {
         this.loopSmallY += 80; //spacing in the y
         this.loopSmallX = 45; //spacing in the x
         this.alien.push(
-          new Alien(this, this.loopSmallX, this.loopSmallY, 10, 10, "white")
+          new Alien(
+            this,
+            this.loopSmallX,
+            this.loopSmallY,
+            10,
+            10,
+            "./docs/assets/img/alien_03.png"
+          )
         );
         this.loopSmallX += 55;
       }
@@ -80,6 +108,7 @@ class Game {
 
   // UPDATE THE GAME:
   update() {
+    console.log(this.frames);
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawBackground();
     this.player.draw();
@@ -170,6 +199,17 @@ this.sound.play();
       this.enemies.splice(index, 1);
       this.score -= 100;
       this.hits3X++;
+      //SOUND - GAME OVER:
+      this.sound.src =
+        "./docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
+      this.sound.loop = false;
+      this.sound.play();
+      //draw game over screen:
+      this.ctx.fillStyle = "#6c464f";
+      this.ctx.fillRect(this.x, this.y, this.width, this.height);
+      this.ctx.font = "30px sol";
+      this.ctx.fillStyle = "#b3cdd1";
+      this.ctx.fillText(`Game Over`, 230, 300);
     }
   }
 
@@ -189,7 +229,6 @@ this.sound.play();
       this.ctx.fillText(`Game Over`, 230, 300);
       //stop the game:
       this.stop();
-      // if enemies collide 3X
     }
   }
 

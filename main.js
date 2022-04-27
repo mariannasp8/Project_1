@@ -10,5 +10,9 @@ window.onload = () => {
       game = new Game();
       game.start();
     }
+    if (game) {
+      game = new Game();
+      game.start();
+    }
   }
 };
