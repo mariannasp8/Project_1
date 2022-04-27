@@ -41,7 +41,7 @@ class Enemy extends Alien {
   constructor(game, x, y, width, height) {
     super(game, x, y, width, height);
     //speed:
-    this.vY = Math.floor(Math.random() * 8 + 2);
+    this.vY = Math.floor(Math.random() * 5 + 1);
   }
   //DRAW ENEMIES:
   draw() {

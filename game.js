@@ -24,10 +24,12 @@ class Game {
     this.hits3X = 0;
     this.projectiles = [];
     this.sound = new Audio();
+    this.isGameActive = false;
   }
 
   //START THE GAME:
   start() {
+    this.isGameActive = true;
     //SOUND - START GAME:
     this.sound.src =
       "./docs/assets/sounds/start-asteroid-space-atmosphere-2004.wav";
@@ -252,6 +254,7 @@ this.sound.play();
 
   //Stop the game:
   stop() {
+    this.isGameActive = false;
     clearInterval(this.intervalId);
   }
 
