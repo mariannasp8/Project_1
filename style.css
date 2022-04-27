@@ -4,17 +4,18 @@
 }
 body {
   /* background-color: #b3cdd1; */
-  background-image: url(/docs/assets/img/background-space_07.png);
+  background-image: url(docs/assets/img/background-space_07.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  opacity: 0.5;
 }
 /*not working - making background more tansparent*/
-.overlay {
+/* .overlay {
   background: #00000056;
   width: 100%;
   position: absolute;
-}
+} */
 #section-1 {
   /*border: 1px solid red;*/
   display: flex;

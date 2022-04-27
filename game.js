@@ -3,7 +3,7 @@ class Game {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.backgroundImg = new Image();
-    this.backgroundImg.src = "./docs/assets/img/background-space_05.png";
+    this.backgroundImg.src = "docs/assets/img/background-space_05.png";
     this.x = 0;
     this.y = 0;
     this.width = 600;
@@ -25,6 +25,8 @@ class Game {
     this.projectiles = [];
     this.sound = new Audio();
     this.isGameActive = false;
+    //this.Level2 = level;   //NOVO NIVEL
+    //this.enemies2 = [];
   }
 
   //START THE GAME:
@@ -32,7 +34,7 @@ class Game {
     this.isGameActive = true;
     //SOUND - START GAME:
     this.sound.src =
-      "./docs/assets/sounds/start-asteroid-space-atmosphere-2004.wav";
+      "docs/assets/sounds/start-asteroid-space-atmosphere-2004.wav";
     this.sound.loop = false;
     this.sound.play();
     //START:
@@ -45,7 +47,7 @@ class Game {
       this.update();
     }, 1000 / 60);
 
-    //DARW BIG ALIEN:
+    //CREATE BIG ALIEN:
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopX + 40) {
         this.alien.push(
@@ -55,7 +57,7 @@ class Game {
             this.loopY,
             40,
             40,
-            "./docs/assets/img/alien_03.png"
+            "docs/assets/img/alien_03.png"
           )
         );
         this.loopX += 55;
@@ -69,14 +71,14 @@ class Game {
             this.loopY,
             40,
             40,
-            "./docs/assets/img/alien_03.png"
+            "docs/assets/img/alien_03.png"
           )
         );
         this.loopX += 55;
       }
     }
 
-    //DRAW SMALL ALIEN:
+    //CREATE SMALL ALIEN:
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopSmallX + 40) {
         this.alien.push(
@@ -86,7 +88,7 @@ class Game {
             this.loopSmallY,
             10,
             10,
-            "./docs/assets/img/alien_0.png"
+            "docs/assets/img/alien_0.png"
           )
         );
         this.loopSmallX += 55; //spacing between
@@ -100,7 +102,7 @@ class Game {
             this.loopSmallY,
             10,
             10,
-            "./docs/assets/img/alien_0.png"
+            "docs/assets/img/alien_0.png"
           )
         );
         this.loopSmallX += 55;
@@ -110,7 +112,6 @@ class Game {
 
   // UPDATE THE GAME:
   update() {
-    console.log(this.frames);
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawBackground();
     this.player.draw();
@@ -133,6 +134,11 @@ class Game {
       projectiles.push(new Particle(this.projectiles.x, this.projectiles.y, 3, `hls(${Math.random() * 360}, 50%, 50%)`))
     } */
 
+    /*   //DRAW ENEMIES2 - BONUS :
+     for (let i = 0; i < this.enemies2.length; i++) {
+      this.enemies2[i].draw();
+    } */
+
     this.drawTimer();
     this.checkColision();
     this.checkColision2();
@@ -142,7 +148,14 @@ class Game {
     this.checkGameOver();
   }
 
-  //CREAT ENEMIES:
+  ///////LEVEL 2:
+  //DRAW LEVEL 2 IN THE SCREEN:
+  /* this.ctx.fillStyle = "#6c464f";
+ this.ctx.fillRect(this.x, this.y, this.width, this.height);
+ this.ctx.font = "30px sol";
+ this.ctx.fillStyle = "#b3cdd1";
+ this.ctx.fillText(`Level 2`, 230, 300); */
+  //CREATE ENEMIES:
   //BONUS:
   createEnemies = () => {
     if (this.frames % 300 === 0) {
@@ -168,7 +181,7 @@ class Game {
           this.bullets.splice(indexBull, 1);
           //SOUND - GET POINTS (not sure yet):
           this.sound.src =
-            "./docs/assets/sounds/get points-fairy-arcade-sparkle-866.wav";
+            "docs/assets/sounds/get points-fairy-arcade-sparkle-866.wav";
           this.sound.loop = false;
           this.sound.play();
           //CONDITIONS FOR HIT ALIEN:
@@ -203,7 +216,7 @@ this.sound.play();
       this.hits3X++;
       //SOUND - GAME OVER:
       this.sound.src =
-        "./docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
+        "docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
       this.sound.loop = false;
       this.sound.play();
       //draw game over screen:
@@ -215,12 +228,18 @@ this.sound.play();
     }
   }
 
+  //CHECK LEVELS:
+  /* checkLevels() {
+    if (this.level === 2) {
+    }
+  } */
+
   //GAME OVER:
   checkGameOver() {
     if (this.frames > 60 * 60) {
       //SOUND - GAME OVER:
       this.sound.src =
-        "./docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
+        "docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
       this.sound.loop = false;
       this.sound.play();
       //draw game over screen:
@@ -239,7 +258,7 @@ this.sound.play();
     if (this.score >= 6000) {
       //SOUND - WIN:
       this.sound.src =
-        "./docs/assets/sounds/win-ethereal-fairy-win-sound-2019.wav";
+        "docs/assets/sounds/win-ethereal-fairy-win-sound-2019.wav";
       this.sound.loop = false;
       this.sound.play();
       //draw win screen:
