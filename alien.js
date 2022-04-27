@@ -68,7 +68,7 @@ class Enemy extends Alien {
   }
 }
 
-/* //CREATE MY NEW ENEMIES II:
+ //CREATE MY NEW ENEMIES II:
 //BONUS:
 class Enemy2 extends Alien {
   constructor(game, x, y, width, height) {
@@ -100,4 +100,4 @@ class Enemy2 extends Alien {
     return this.x;
   }
 }
- */
+ 

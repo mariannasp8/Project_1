@@ -55,7 +55,7 @@ class Bullet {
   }
 }
 
-//CREATING MY PARTICLES EXPLOSION:
+/* //CREATING MY PARTICLES EXPLOSION:
 class Particle {
   constructor(game, x, y, radius, color) {
     this.x = x;
@@ -72,4 +72,4 @@ class Particle {
     )}, 50%, 50%)`;
     this.game.fill();
   }
-}
+} */

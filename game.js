@@ -26,7 +26,7 @@ class Game {
     this.sound = new Audio();
     this.isGameActive = false;
     //this.Level2 = level;   //NOVO NIVEL
-    //this.enemies2 = [];
+    this.enemies2 = [];
   }
 
   //START THE GAME:
@@ -134,11 +134,6 @@ class Game {
       projectiles.push(new Particle(this.projectiles.x, this.projectiles.y, 3, `hls(${Math.random() * 360}, 50%, 50%)`))
     } */
 
-    /*   //DRAW ENEMIES2 - BONUS :
-     for (let i = 0; i < this.enemies2.length; i++) {
-      this.enemies2[i].draw();
-    } */
-
     this.drawTimer();
     this.checkColision();
     this.checkColision2();
@@ -148,13 +143,22 @@ class Game {
     this.checkGameOver();
   }
 
-  ///////LEVEL 2:
-  //DRAW LEVEL 2 IN THE SCREEN:
-  /* this.ctx.fillStyle = "#6c464f";
- this.ctx.fillRect(this.x, this.y, this.width, this.height);
- this.ctx.font = "30px sol";
- this.ctx.fillStyle = "#b3cdd1";
- this.ctx.fillText(`Level 2`, 230, 300); */
+  ////LEVEL 2:
+  level2() {
+    if (checkWin()) {
+      //DRAW LEVEL 2 IN THE SCREEN:
+      this.ctx.fillStyle = "#6c464f";
+      this.ctx.fillRect(this.x, this.y, this.width, this.height);
+      this.ctx.font = "30px sol";
+      this.ctx.fillStyle = "#b3cdd1";
+      this.ctx.fillText(`Level 2`, 230, 300);
+      //DRAW ENEMIES - BONUS :
+      for (let i = 0; i < this.enemies2.length; i++) {
+        this.enemies2[i].draw();
+      }
+    }
+  }
+
   //CREATE ENEMIES:
   //BONUS:
   createEnemies = () => {
@@ -163,6 +167,22 @@ class Game {
         new Enemy(
           this,
           Math.floor(Math.random() * this.width - 50),
+          -50,
+          50,
+          50
+        )
+      );
+    }
+  };
+
+  //CREATE ENEMIES2:
+  //BONUS:
+  createEnemies2 = () => {
+    if (this.frames % 300 === 0) {
+      this.enemies.push(
+        new Enemy(
+          this,
+          Math.floor(Math.random() * this.height - 50),
           -50,
           50,
           50
@@ -181,7 +201,7 @@ class Game {
           this.bullets.splice(indexBull, 1);
           //SOUND - GET POINTS (not sure yet):
           this.sound.src =
-            "docs/assets/sounds/get points-fairy-arcade-sparkle-866.wav";
+            "docs/assets/sounds/shoot-repeating-arcade-beep-1084.wav";
           this.sound.loop = false;
           this.sound.play();
           //CONDITIONS FOR HIT ALIEN:
@@ -201,6 +221,7 @@ class Game {
 this.sound.loop = false;
 this.sound.play();
  */
+
   // PLAYER being hit by ENEMIES:
   //COLISION - BONUS:
   checkColision2() {
@@ -227,12 +248,6 @@ this.sound.play();
       this.ctx.fillText(`Game Over`, 230, 300);
     }
   }
-
-  //CHECK LEVELS:
-  /* checkLevels() {
-    if (this.level === 2) {
-    }
-  } */
 
   //GAME OVER:
   checkGameOver() {
