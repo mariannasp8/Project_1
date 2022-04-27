@@ -2,20 +2,14 @@
   src: url(./docs/assets/fonts/Solaris.ttf);
   font-family: sol;
 }
-body {
-  /* background-color: #b3cdd1; */
+
+.bg-img {
   background-image: url(docs/assets/img/background-space_07.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  opacity: 0.5;
 }
-/*not working - making background more tansparent*/
-/* .overlay {
-  background: #00000056;
-  width: 100%;
-  position: absolute;
-} */
+
 #section-1 {
   /*border: 1px solid red;*/
   display: flex;
@@ -27,14 +21,16 @@ h1 {
   margin-left: 315px;
   font-family: sol;
   font-size: 70px;
-  padding-top: -20px; /*not working*/
+  /* margin-top: 70px; */
   color: #6c464f;
+  height: 50px;
 }
 
 #canvas {
   font-family: "Chakra Petch", sans-serif;
   border-radius: 10px;
   box-shadow: 20px 5px 5px black;
+  border: 1px solid black;
 }
 
 .game-box {
@@ -43,7 +39,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 40px;
 }
 .info-box {
   /*border: 1px solid blue;*/
@@ -54,7 +50,7 @@ h1 {
   align-items: center;
   border-radius: 10px;
   background-color: #6c464f;
-  color: #fff;
+  color: white;
   opacity: 0.5;
   padding: 10px 20px 25px 25px;
 }
