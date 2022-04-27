@@ -55,7 +55,7 @@ class Game {
             this.loopY,
             40,
             40,
-            "./docs/assets/img/alien_02.png"
+            "./docs/assets/img/alien_03.png"
           )
         );
         this.loopX += 55;
@@ -69,7 +69,7 @@ class Game {
             this.loopY,
             40,
             40,
-            "./docs/assets/img/alien_02.png"
+            "./docs/assets/img/alien_03.png"
           )
         );
         this.loopX += 55;
@@ -86,7 +86,7 @@ class Game {
             this.loopSmallY,
             10,
             10,
-            "./docs/assets/img/alien_03.png"
+            "./docs/assets/img/alien_0.png"
           )
         );
         this.loopSmallX += 55; //spacing between
@@ -100,7 +100,7 @@ class Game {
             this.loopSmallY,
             10,
             10,
-            "./docs/assets/img/alien_03.png"
+            "./docs/assets/img/alien_0.png"
           )
         );
         this.loopSmallX += 55;
