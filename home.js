@@ -1,26 +1,26 @@
-// DOM selectors
+// DOM SELECTORS:
 const stars = document.getElementById("stars");
 const starsCtx = stars.getContext("2d");
 const slider = document.querySelector(".slider input");
 const output = document.querySelector("#speed");
 
-// global variables
+// GLOBAL VARIABLES:
 let screen,
   starsElements,
-  starsParams = { speed: 10, number: 300, extinction: 4 };
+  starsParams = { speed: 12, number: 300, extinction: 4 };
 
-// run stars
+// STARS RUNNING:
 setupStars();
 updateStars();
 
-// handle slider
+//  HANDLER SLIDER:
 output.innerHTML = slider.value;
 slider.oninput = function () {
   output.innerHTML = this.value;
   starsParams.speed = this.value;
 };
 
-// update stars on resize to keep them centered
+// UPDATE STARS + RESIZE + CENTER THEM:
 window.onresize = function () {
   setupStars();
   //SOUND:
@@ -28,7 +28,7 @@ window.onresize = function () {
   this.sound.play();
 };
 
-// star constructor
+// CREATE STAR:
 function Star() {
   this.x = Math.random() * stars.width;
   this.y = Math.random() * stars.height;
@@ -76,9 +76,9 @@ function setupStars() {
   }
 }
 
-// redraw the frame
+// REDRAW MY SCREEN:
 function updateStars() {
-  starsCtx.fillStyle = "#264653";
+  starsCtx.fillStyle = "black";
   starsCtx.fillRect(0, 0, stars.width, stars.height);
   starsElements.forEach(function (s) {
     s.show();

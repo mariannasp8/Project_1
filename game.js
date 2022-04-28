@@ -1,5 +1,5 @@
 class Game {
-  constructor() {
+  constructor(enemieFrequency) {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.backgroundImg = new Image();
@@ -25,6 +25,7 @@ class Game {
     this.projectiles = [];
     this.sound = new Audio();
     this.isGameActive = false;
+    this.enemieFrequency = enemieFrequency;
   }
 
   //START THE GAME:
@@ -144,7 +145,7 @@ class Game {
   //CREATE ENEMIES:
   //BONUS:
   createEnemies = () => {
-    if (this.frames % 300 === 0) {
+    if (this.frames % 200 === 0) {
       this.enemies.push(
         new Enemy(
           this,
