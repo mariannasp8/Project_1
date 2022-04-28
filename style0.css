@@ -33,18 +33,20 @@ h1 {
   display: flex;
   justify-content: center;
  } */
- #stars {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        
- }
+#stars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 #box {
-  border: 1px solid red;
+  /* border: 1px solid red;*/
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
+  position: fixed;
+  left: 40%;
+  top: 40%;
 }
 .slider input {
   width: 100%;

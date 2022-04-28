@@ -46,7 +46,6 @@ class Game {
     }, 1000 / 60);
 
     //CREATE BIG ALIEN:
-
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopX + 40) {
         this.alien.push(
