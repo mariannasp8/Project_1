@@ -73,3 +73,63 @@ class Particle {
     this.game.fill();
   }
 } */
+
+
+class Ray extends Bullet(){
+  constructor(game, x, y) {
+    super(game, x, y); 
+    this.color = `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`;
+    this.sound = new Audio();
+    
+  }
+ /*  constructor(game, x, y){
+    this.game = game;
+    this.x = x;
+    this.y = y;
+    this.radius = 3;
+    this.color = `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`;
+    this.sound = new Audio();
+  } */
+
+
+  //to create the bullet:
+  drawRay = () => {
+    this.game.ctx.beginPath();
+    this.game.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    /* this.game.ctx.fillRect(this.x, this.y, 2, 2) */
+    this.game.ctx.fillStyle = this.color;
+    this.game.ctx.fill();
+    //to move the bullet:
+    this.y -= 4;
+  };
+
+  //BULLETS LIMITS (use this for establish the colisions):
+  topBullet() {
+    return this.y;
+  }
+
+  bottomBullet() {
+    return this.y + this.height;
+  }
+  //PUT THE RADIUS BECAUSE THE BULLET IS A CIRCLE:
+  rigthBullet() {
+    return this.x + this.radius;
+  }
+
+  leftBullet() {
+    return this.x;
+  }
+
+  //
+//  //CONDITIONS FOR THE COLLISION:
+// ENEMIES 2 AND BULLETS INTO PLAYER:
+ crashWithbullets(player) {
+  return !(
+    this.bottomBullet() < player.topPlayer() ||
+    this.topBullet() > player.bottomPlayer() ||
+    this.rigthBullet() < player.leftPlayer() ||
+    this.leftBullet() > player.rightPlayer()
+  );
+}
+}
+

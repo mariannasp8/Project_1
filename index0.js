@@ -7,7 +7,7 @@ const output = document.querySelector("#speed");
 // global variables
 let screen,
   starsElements,
-  starsParams = { speed: 8, number: 300, extinction: 4 };
+  starsParams = { speed: 10, number: 300, extinction: 4 };
 
 // run stars
 setupStars();
@@ -23,6 +23,9 @@ slider.oninput = function () {
 // update stars on resize to keep them centered
 window.onresize = function () {
   setupStars();
+  //SOUND:
+  this.sound.src = "docs/assets/sounds/intro-sound.wav";
+  this.sound.play();
 };
 
 // star constructor
@@ -75,7 +78,7 @@ function setupStars() {
 
 // redraw the frame
 function updateStars() {
-  starsCtx.fillStyle = "black";
+  starsCtx.fillStyle = "#264653";
   starsCtx.fillRect(0, 0, stars.width, stars.height);
   starsElements.forEach(function (s) {
     s.show();
