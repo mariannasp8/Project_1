@@ -275,7 +275,7 @@ this.sound.play();
 
   //DRAW TIMER:
   drawTimer() {
-    let timer = Math.floor(this.frames / 60);
+    let timer = 60 - Math.floor(this.frames / 60);
     this.ctx.font = "24px sol";
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Timer: ${timer}`, 25, 40);
