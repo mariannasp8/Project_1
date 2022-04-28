@@ -1,5 +1,7 @@
 let game = null;
 
+const startButton = document.getElementById("start-btn");
+
 function startGame() {
   if (!game || !game.isGameActive) {
     game = new Game();
@@ -8,7 +10,8 @@ function startGame() {
 }
 
 window.onload = () => {
-  document.getElementById("start-btn").onclick = () => {
+  startButton.onclick = () => {
     startGame();
+    startButton.style.display = "none";
   };
 };
