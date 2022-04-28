@@ -25,10 +25,6 @@ class Game {
     this.projectiles = [];
     this.sound = new Audio();
     this.isGameActive = false;
-    //this.Level2 = level;   //NOVO NIVEL
-    this.enemies2 = [];
-    this.hits2X = 0;
-    this.Ray = [];
   }
 
   //START THE GAME:
@@ -50,40 +46,38 @@ class Game {
     }, 1000 / 60);
 
     //CREATE BIG ALIEN:
-    drawBigAlien = () => {
-      for (let i = 0; i < 50; i++) {
-        if (this.canvas.width > this.loopX + 40) {
-          this.alien.push(
-            new Alien(
-              this,
-              this.loopX,
-              this.loopY,
-              40,
-              40,
-              "docs/assets/img/alien_03.png"
-            )
-          );
-          this.loopX += 55;
-        } else {
-          this.loopY += 80;
-          this.loopX = 30;
-          this.alien.push(
-            new Alien(
-              this,
-              this.loopX,
-              this.loopY,
-              40,
-              40,
-              "docs/assets/img/alien_03.png"
-            )
-          );
-          this.loopX += 55;
-        }
+
+    for (let i = 0; i < 50; i++) {
+      if (this.canvas.width > this.loopX + 40) {
+        this.alien.push(
+          new Alien(
+            this,
+            this.loopX,
+            this.loopY,
+            40,
+            40,
+            "docs/assets/img/alien_03.png"
+          )
+        );
+        this.loopX += 55;
+      } else {
+        this.loopY += 80;
+        this.loopX = 30;
+        this.alien.push(
+          new Alien(
+            this,
+            this.loopX,
+            this.loopY,
+            40,
+            40,
+            "docs/assets/img/alien_03.png"
+          )
+        );
+        this.loopX += 55;
       }
     }
- 
-    drawSmallAlien = () => {
-      //CREATE SMALL ALIEN:
+
+    //CREATE SMALL ALIEN:
     for (let i = 0; i < 50; i++) {
       if (this.canvas.width > this.loopSmallX + 40) {
         this.alien.push(
@@ -114,8 +108,6 @@ class Game {
       }
     }
   }
-    }
-    
 
   // UPDATE THE GAME:
   update() {
@@ -125,8 +117,7 @@ class Game {
     this.frames++;
     this.createEnemies();
     //DRAW ALIENS:
-    this.drawBigAlien();
-    this.drawSmallAlien();
+
     for (let i = 0; i < this.alien.length; i++) {
       this.alien[i].draw();
     }
@@ -138,10 +129,6 @@ class Game {
     for (let i = 0; i < this.enemies.length; i++) {
       this.enemies[i].draw();
     }
-    //DRAW PARTICLES - BONUS:
-    /* for(let i = 0; i < 8; i++) {
-      projectiles.push(new Particle(this.projectiles.x, this.projectiles.y, 3, `hls(${Math.random() * 360}, 50%, 50%)`))
-    } */
 
     this.drawTimer();
     this.checkColision();
@@ -150,50 +137,10 @@ class Game {
     if (this.hits3X === 3) {
       this.stop();
     }
-    //colision with bullets from enemies2:
-    this.checkColision3();
-    this.createEnemies2();
-    if (this.hits2X === 2) {
-      this.stop();
-    }
-    this.level2();
+
     this.checkGameOver();
     this.checkWin();
   }
-
-  ////LEVEL 2:
-   level2() {
-    if (this.checkWin()) {
-      this.stop()
-      //DRAW LEVEL 2 IN THE SCREEN:
-      this.ctx.fillStyle = "#6c464f";
-      this.ctx.fillRect(this.x, this.y, this.width, this.height);
-      this.ctx.font = "30px sol";
-      this.ctx.fillStyle = "#b3cdd1";
-      this.ctx.fillText(`Level 2`, 230, 300);
-      //DRAW ENEMIES 2 - BONUS :
-      for (let i = 0; i < this.enemies2.length; i++) {
-        this.enemies2[i].draw();
-      }
-       //DRAW ALIENS:
-    for (let i = 0; i < this.alien.length; i++) {
-      this.alien[i].draw();
-    }
-    //DRAW BULLETS:
-    this.bullets.forEach((bullet) => {
-      bullet.drawBullet();
-    });
-    //DRAW ENEMIES - BONUS :
-    for (let i = 0; i < this.enemies.length; i++) {
-      this.enemies[i].draw();
-    }
-     //DRAW BULLETS RAY:
-     this.ray = new Ray();
-     this.Ray.forEach((bullet) => {
-      bullet.drawRay();
-    });
-    }
-  } 
 
   //CREATE ENEMIES:
   //BONUS:
@@ -203,22 +150,6 @@ class Game {
         new Enemy(
           this,
           Math.floor(Math.random() * this.width - 50),
-          -50,
-          50,
-          50
-        )
-      );
-    }
-  };
-
-  //CREATE ENEMIES2:
-  //BONUS:
-  createEnemies2 = () => {
-    if (this.frames % 300 === 0) {
-      this.enemies.push(
-        new Enemy(
-          this,
-          Math.floor(Math.random() * this.height - 50),
           -50,
           50,
           50
@@ -242,7 +173,7 @@ class Game {
           this.sound.play();
           //CONDITIONS FOR HIT ALIEN:
           if (el.width === 10) {
-            this.score += 2000;
+            this.score += 100;
           } else {
             this.score += 50;
           }
@@ -271,33 +202,6 @@ this.sound.play();
       this.enemies.splice(index, 1);
       this.score -= 100;
       this.hits3X++;
-      //SOUND - GAME OVER:
-      this.sound.src =
-        "docs/assets/sounds/game over-player-losing-or-failing-2042.wav";
-      this.sound.loop = false;
-      this.sound.play();
-      //draw game over screen:
-      this.ctx.fillStyle = "#6c464f";
-      this.ctx.fillRect(this.x, this.y, this.width, this.height);
-      this.ctx.font = "30px sol";
-      this.ctx.fillStyle = "#b3cdd1";
-      this.ctx.fillText(`Game Over`, 230, 300);
-    }
-  }
-
-  // PLAYER being hit by ENEMIES 2 BULLETS:
-  //COLISION - BONUS:
-  checkColision3() {
-    const player = this.player;
-    let index = null;
-    const crashed = this.enemies2.some((enemy, i) => {
-      index = i;
-      return player.crashWithbullets(enemy);
-    });
-    if (crashed) {
-      this.enemies2.splice(index, 1);
-      this.score -= 200;
-      this.hits2X++;
       //SOUND - GAME OVER:
       this.sound.src =
         "docs/assets/sounds/game over-player-losing-or-failing-2042.wav";

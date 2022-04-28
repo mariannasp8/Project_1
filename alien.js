@@ -68,36 +68,3 @@ class Enemy extends Alien {
   }
 }
 
- //CREATE MY NEW ENEMIES II:
-//BONUS:
-class Enemy2 extends Alien {
-  constructor(game, x, y, width, height) {
-    super(game, x, y, width, height);
-    //speed:
-    this.vX = Math.floor(Math.random() * 5 + 1);
-  }
-  //DRAW ENEMIES:
-  draw() {
-    this.X += this.vZ;
-    this.img.src = "./docs/assets/img/spaceship_03.png";
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
-
-  //ENEMY LIMITS (use this for establish the colisions):
-  topEnemy2() {
-    return this.y;
-  }
-
-  bottomEnemy2() {
-    return this.y + this.height;
-  }
-
-  rightEnemy2() {
-    return this.x + this.width;
-  }
-
-  leftEnemy2() {
-    return this.x;
-  }
-}
- 
