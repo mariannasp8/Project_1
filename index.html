@@ -4,53 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,300&family=Montserrat:wght@100&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="./style.css" />
-    <title>Game</title>
+    <link rel="stylesheet" href="style0.css" />
+    <title>Game-0</title>
   </head>
   <body>
-    <div class="bg-img">
-      <section id="section-1">
-        <!-- SCREEN  -->
-        <h1>S O L A R I S</h1>
-        <div class="game-box">
-          <div id="board-game">
-            <!-- GAME SCREEN -->
-            <canvas id="canvas" width="600px" height="600px"></canvas>
-          </div>
-          <!-- INSTRUCTIONS SCREEN -->
-          <div class="info-box">
-            <p>
-              Hey there! Our planet is being invaded by aliens. <br />
-              Helps us to kill the two different kind of aliens and avoid an
-              invasion.<br />
-              To shoot, press "space" <br />
-              If you hit the RT32 you gain 50 points. <br />If you hit the H12
-              you gain 100 points. <br />
-              Move left and right, pressing the corresponding arrows. <br />
-              Hit as many enemies as you can. Be careful with the falling
-              spaceships. If the FW58 hits you, you lose 100 points.<br />
-              Try to score 6000 points.
-            </p>
-
-            <button id="start-btn">start</button>
-          </div>
+    <section>
+    
+      <canvas id="stars"></canvas>
+      
+        <div id="box">
+          <h1>S O L A R I S</h1>
+          <a href="homeGame.html"> <button id="start-btn">Star Game</button> </a>
         </div>
-        <div class="overlay"></div>
-      </section>
-    </div>
-    <!-- LINKS -->
-    <script src="alien.js"></script>
-    <script src="bullets.js"></script>
-    <script src="controls.js"></script>
-    <script src="player.js"></script>
-    <script src="game.js"></script>
-    <script src="main.js"></script>
+        
+      </div>
+    </section>
+    <script src="home.js"></script>
   </body>
 </html>
